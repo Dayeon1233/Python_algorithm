@@ -1,0 +1,26 @@
+def solution(str):
+     answer = ''
+     word_len = len(s)
+     if word_len %2 == 0 :
+         idx = word_len // 2
+         print(idx)
+         answer = s[idx-1] + s[idx]
+         print(answer)
+     else :
+         idx = word_len // 2
+         print(idx)
+         answer = s[idx]
+         print(answer)
+
+
+
+    #print(str[(len(str) - 1) // 2:len(str) // 2 + 1])
+    return answer
+
+
+
+
+if __name__ == "__main__":
+    str = "qwer"
+    #str = "abcde"
+    solution(str)
