@@ -1,21 +1,19 @@
 def solution(str):
      answer = ''
-     word_len = len(s)
-     if word_len %2 == 0 :
+     word_len = len(str)
+     if word_len % 2 == 0 :
          idx = word_len // 2
          print(idx)
-         answer = s[idx-1] + s[idx]
+         answer = str[idx-1] + str[idx]
          print(answer)
      else :
          idx = word_len // 2
          print(idx)
-         answer = s[idx]
+         answer = str[idx]
          print(answer)
+     return answer
 
 
-
-    #print(str[(len(str) - 1) // 2:len(str) // 2 + 1])
-    return answer
 
 
 
