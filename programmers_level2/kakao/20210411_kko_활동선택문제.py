@@ -1,4 +1,4 @@
-
+#O(N)
 
 def solution(start_time, running_time):
 
@@ -24,12 +24,18 @@ if __name__ == "__main__":
     116,95,630]
     running_time = [502,518,196,106,405,452,299,189,124,506,883,753,567,
                     717,338,439,145]
+    #4
 
 
     start_time = [1, 3, 3, 5, 7]
     running_time = [2, 2, 1,2,1]
+    #4
+
     # start_time = [1]
     # running_time = [1]
+    # 1
+
     # start_time = [1, 3, 5]
     # running_time = [2, 2,2]
+    #3
     print(solution(start_time, running_time))

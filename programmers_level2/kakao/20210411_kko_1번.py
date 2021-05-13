@@ -1,9 +1,12 @@
-
+#O(N)
 def solution(arr):
+
     print("arr" ,arr)
     per = {}
     answer = []
     min = 0
+
+
     for i in arr:
         if i[0] not in per:
             per[i[0]] = -int(i[2])
@@ -21,21 +24,26 @@ def solution(arr):
             answer.append(j)
         elif per[j] < 0 and per[j] == min:
             answer.append(j)
+
     if len(answer) == 0:
         answer.append("None")
 
-    answer.sort()
+    answer.sort() #O(N Log N)
+# 최악 또는 평균의 경우 O(N Log N)
+# 최고의 경우 O(N)
 
     return answer
 
+
+
 if __name__ == "__main__":
-    arr = [
-        ['Frodo', 'Apeach', 7],
-        ['Frodo', 'Apeach', 3],
-        ['Apeach', 'Frodo', 4],
-        ['Frodo', 'Apeach', 1],
-        ['Apeach', 'Frodo', 7]
-    ]
+    # arr = [
+    #     ['Frodo', 'Apeach', 7],
+    #     ['Frodo', 'Apeach', 3],
+    #     ['Apeach', 'Frodo', 4],
+    #     ['Frodo', 'Apeach', 1],
+    #     ['Apeach', 'Frodo', 7]
+    # ]
     #None
     arr=[
        ['Neo', 'Tube', 12],
