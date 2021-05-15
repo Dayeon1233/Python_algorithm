@@ -1,6 +1,3 @@
-from collections import deque
-from itertools import combinations
-
 def solution(d, budget):
     answer = 0
     d.sort()
