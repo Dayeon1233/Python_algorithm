@@ -2,7 +2,7 @@ def solution(n, arr1, arr2):
     answer = []
 
     for i in range(n):
-        rowAarr1 = tenToTwo(n,arr1[i])
+        rowArr1 = tenToTwo(n,arr1[i])
         rowArr2 = tenToTwo(n,arr2[i])
         rowAnswer = ""
         for j in range(n) :
