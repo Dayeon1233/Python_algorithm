@@ -1,0 +1,36 @@
+def solution(lottos, win_nums):
+    answer = []
+    win = {6:1,5:2,4:3,3:4,2:5,-1:6}
+    zeroCnt = lottos.count(0)
+    maxHit = 0
+    minHit = 0
+
+    lottosSet = set(lottos)
+    winnumSet = set(win_nums)
+
+    baseHitCnt = len(lottosSet & winnumSet)
+    namageNumberCnt = len(winnumSet - lottosSet)
+
+    if namageNumberCnt >= zeroCnt :
+        maxHit = baseHitCnt + zeroCnt
+    else :
+        maxHit = baseHitCnt + namageNumberCnt
+
+    if maxHit > 6 :
+        maxHit = 6
+    minHit = baseHitCnt
+
+    if minHit < 2 :
+        minHit = -1
+    if maxHit < 2 :
+        maxHit = -1
+    answer.append(win[maxHit])
+    answer.append(win[minHit])
+
+    return answer
+
+
+if __name__ == "__main__":
+    lottos = [1, 2, 3, 4, 5, 6]
+    win_nums =	[38, 19, 20, 40, 15, 25]
+    print(solution(lottos, win_nums))
