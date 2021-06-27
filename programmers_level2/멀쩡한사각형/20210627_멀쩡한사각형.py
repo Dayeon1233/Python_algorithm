@@ -8,9 +8,9 @@ def solution(w,h):
 
     return w*h - (naw + nah -1) * gcd
 
-    #return w*h-w-h+gcd(w,h)
+#def solution(w, h): return w * h - w - h + gcd(w, h)
 
-# 8 12 4
+
 if __name__ == "__main__":
     W = 8
     H = 12
