@@ -1,33 +1,29 @@
-def solution(n, lost, reserve):
-    answer = 0
+from collections import deque
 
-    setlost = set(lost)
-    setreserve = set(reserve)
+def solution(s):#baabaa
+    q = deque(s)
+    lists=list(s)
+    index = 0
+    initLen = len(s)
+    while q:
+        for i in range(0,len(q)-1):
+            if q[i] == q[i+1]:
+                tmp = q[i]
+                q.remove(tmp)
+                q.remove(tmp)
+                index += i+1
+                break;
+            else:
+                index = i
+        if q and index == initLen-2:
+            return 0
 
-    reallost = setlost - setreserve
-    lost = list(reallost)
+    return 1
 
-    realresesrve = setreserve - setlost
-    reserve = list(realresesrve)
 
-    lost.sort()
-    reserve.sort()
-
-    answer = n - len(lost)
-    for j in lost:
-        for i in reserve :
-            if j == i - 1 or j == i + 1 :
-                answer += 1
-                reserve.remove(i)
-                break
-
-    return answer
 
 if __name__ == "__main__":
-    #nums = [3,1,2,3]
-    #nums = [3,3,3,2,2,4]
-    n=3
-    lost = [3]
-    reserve=[1]
 
-    print(solution(n,lost,reserve))
+    s="baabaa"
+
+    print(solution(s))

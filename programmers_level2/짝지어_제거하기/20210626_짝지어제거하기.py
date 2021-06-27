@@ -1,33 +1,30 @@
-def solution(n, lost, reserve):
-    answer = 0
+#풀다가 그만두고다른풀이로,,
 
-    setlost = set(lost)
-    setreserve = set(reserve)
+def solution(s):#baabaa
+    index = 0
+    lists = []
+    lists = list(s)
+    initlenS = len(lists)
 
-    reallost = setlost - setreserve
-    lost = list(reallost)
+    while True:
+        lenS = len(lists) #6
 
-    realresesrve = setreserve - setlost
-    reserve = list(realresesrve)
+        if lenS == 0:
+            return 1
+        elif lenS > 0 and (index == initlenS-1 or index == 0):
+            return 0
+        #elif index == initlenS -1
 
-    lost.sort()
-    reserve.sort()
-
-    answer = n - len(lost)
-    for j in lost:
-        for i in reserve :
-            if j == i - 1 or j == i + 1 :
-                answer += 1
-                reserve.remove(i)
-                break
-
-    return answer
+        else:
+            for i in range(0,lenS-1):
+                if lists[i] == lists[i+1]:
+                    tmp = lists[i]
+                    lists.remove(tmp)
+                    lists.remove(tmp)
+                    index += i+1 #4
+                    break;
 
 if __name__ == "__main__":
-    #nums = [3,1,2,3]
-    #nums = [3,3,3,2,2,4]
-    n=3
-    lost = [3]
-    reserve=[1]
+    s = "baabaa"
 
-    print(solution(n,lost,reserve))
+    print(solution(s))

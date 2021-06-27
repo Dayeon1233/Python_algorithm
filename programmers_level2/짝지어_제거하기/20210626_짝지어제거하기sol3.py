@@ -1,24 +1,21 @@
 from collections import deque
 
 def solution(s):#baabaa
-    q = deque(s)
-    lists=list(s)
-    index = 0
-    initLen = len(s)
-    while q:
-        for i in range(0,len(q)-1):
-            if q[i] == q[i+1]:
-                tmp = q[i]
-                q.remove(tmp)
-                q.remove(tmp)
-                index += i+1
-                break;
+    st = deque()
+    for i in s:
+        if st:
+            #tmp = st.pop()
+            if i == st[-1]:
+                st.pop()
             else:
-                index = i
-        if q and index == initLen-2:
-            return 0
+                st.append(i)
+        else :
+            st.append(i)
+    if st:
+        return 0
+    else:
+        return 1
 
-    return 1
 
 
 

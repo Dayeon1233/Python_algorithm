@@ -1,27 +1,30 @@
-import heapq
-def solution(scoville, K):
-    answer = 0
-    heapq.heapify(scoville)
+def solution(record):
+    answer = []
+    nameDict = {}
+    for i in record :
+        tmp = i.split()
+        if i.startswith("E"):
+            id = tmp[1]
+            nameDict[id]=tmp[2]
 
-    while len(scoville) >=2 :
+        elif i.startswith("C"):
+            nameDict[tmp[1]] = tmp[2]
 
-        if scoville[0] >= K :
-            return answer
-        answer += 1
-        min_ = heapq.heappop(scoville)
-        min_2 = heapq.heappop(scoville)
-        heapq.heappush(scoville, min_ + min_2*2)
-
-    if scoville[0] >=K :
-        return answer
-    else:
-        return -1
-
+    for i in record:
+        tmp = i.split()
+        if i.startswith("E"):
+            nickname = nameDict[tmp[1]]
+            answer.append(nickname+"님이 들어왔습니다.")
 
 
+        elif i.startswith("L"):
+            nickname = nameDict[tmp[1]]
+            answer.append(nickname + "님이 나갔습니다.")
+
+
+    return answer
 
 
 if __name__ == "__main__":
-    scoville = [12, 9, 3, 2, 1, 10]
-    K = 100
-    print(solution(scoville, K))
+    record = ["Enter uid1234 Muzi", "Enter uid4567 Prodo","Leave uid1234","Enter uid1234 Prodo","Change uid4567 Ryan"]
+    print(solution(record))

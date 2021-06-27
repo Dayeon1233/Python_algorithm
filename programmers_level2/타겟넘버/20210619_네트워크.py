@@ -1,20 +1,24 @@
 from collections import deque
-def solution(numbers, target):
+def solution(n, computers):
     answer = 0
     queue = deque()
-    n = len(numbers)
-    queue.append([numbers[0],0])
-    queue.append([-1*numbers[0],0])
-    while queue:
-        temp, idx = queue.popleft()
-        idx += 1
-        if idx < n:
-            queue.append([temp+numbers[idx], idx])
-            queue.append([temp-numbers[idx], idx])
-        else:
-            if temp == target:
-                answer += 1
+    visited = []
+
+    for i in computers[i] :
+        for j in computers[j] :
+            if computers[i][j] == 1:
+                queue.append(i)
+                queue.append(j)
+                visited.append(i)
+
+                bfs(queue)
+
     return answer
+def bfs(queue):
+    tmp = queue.popleft()
+
 
 if __name__ == "__main__":
-    print(solution([1, 1, 1, 1, 1],3))
+    computers = [[1, 1, 0], [1, 1, 0], [0, 0, 1]]
+    n = 3
+    print(solution(n, computers))
