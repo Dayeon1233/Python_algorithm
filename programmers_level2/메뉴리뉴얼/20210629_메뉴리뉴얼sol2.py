@@ -1,36 +1,22 @@
-from itertools import combinations
+import collections
+import itertools
 
 def solution(orders, course):
-    answer = []
-    dict={}
-    for c in course:
-        for i in range(len(orders)):
-           if len(orders[i]) >= c:
-               combi = list(map(''.join,combinations(orders[i],c)))
-               for sets in combi:
+    result = []
 
-                   tmpSet = set(sets)
-                   setCount = 0
+    for course_size in course:
+        order_combinations = []
+        for order in orders:
+            order_combinations += itertools.combinations(sorted(order), course_size)
 
-                   for j in range(len(orders)):
-                        tmpset2= set(orders[j])
-                        if tmpSet.issubset(tmpset2):
-                            setCount+=1
-                   if setCount >=2:
-                        sets = ''.join(sorted(sets,reverse=False))
-                        dict[sets] = setCount
+        most_ordered = collections.Counter(order_combinations).most_common(5)
+        result += [ k for k, v in most_ordered if v > 1 and v == most_ordered[0][1] ]
 
-        if dict:
-            maxval = max(dict.values())
-            answer += [k for k, v in dict.items() if maxval == v]
-        dict.clear()
-    answer.sort()
-
-    return answer
+    return [ ''.join(v) for v in sorted(result) ]
 
 if __name__ == "__main__":
-    #orders = ["ABCFG", "AC", "CDE", "ACDE", "BCFG", "ACDEH"]
-    #course = [2,3,4]
+    orders = ["ABCFG", "AC", "CDE", "ACDE", "BCFG", "ACDEH"]
+    course = [2,3,4]
 
     #orders = ["ABCDE", "AB", "CD", "ADE", "XYZ", "XYZ", "ACD"]
     #course = [2, 3, 5]
@@ -38,7 +24,7 @@ if __name__ == "__main__":
     #orders = ["XYZ", "XWY", "WXA"]
     #course = [2, 3, 4]
 
-    orders = ["ABCD", "ABCD", "ABCD"]
-    course = [2,3,4]
+    #orders = ["ABCD", "ABCD", "ABCD"]
+    #course = [2,3,4]
 
     print(solution(orders, course))
