@@ -14,10 +14,8 @@ def solution(prices):
             answer.append(j-i)
     return list(reversed(answer))
 
-
-
 if __name__ == "__main__":
     #prices = [1,2,3,2,3,1]
-    #prices = [1, 2, 3, 2, 3]
-    prices = [1,2,3,3,2]
+    prices = [1, 2, 3, 2, 3]
+    #prices = [1,2,3,3,2]
     print(solution(prices))
