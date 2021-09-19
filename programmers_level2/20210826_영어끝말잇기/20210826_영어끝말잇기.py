@@ -34,7 +34,7 @@ def solution(n, words):
     if duplicate_word_case == False and wrong_word_case == False:
         return [0,0]
 
-    if wrong_word_case and duplicate_word_case == False:
+    if wrong_word_case and duplicate_word_case is False:
         return getanswer(wrong_word_idx,n)
     elif wrong_word_case == False and duplicate_word_case:
         return getanswer(second_idx,n)
